@@ -8,6 +8,10 @@ components:
       image: maven:3.9.6-eclipse-temurin-17
       memoryLimit: 1Gi
       mountSources: true
+      command:
+        - sleep
+      args:
+        - infinity
       endpoints:
         - name: http
           targetPort: 8080
