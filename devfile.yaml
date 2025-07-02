@@ -23,7 +23,7 @@ components:
   # PostgreSQL サイドカーコンテナ
   - name: postgresql
     container:
-      image: postgres:15
+      image: postgres:17
       memoryLimit: 512Mi
       env:
         - name: POSTGRES_DB
@@ -35,4 +35,8 @@ components:
       endpoints:
         - name: postgres
           targetPort: 5432
-
+      # 常駐化のためのコマンド（Postgres は不要だが念のため）
+      command:
+        - "docker-entrypoint.sh"
+      args:
+        - "postgres"
