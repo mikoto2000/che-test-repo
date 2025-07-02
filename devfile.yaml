@@ -1,0 +1,38 @@
+schemaVersion: 2.2.0
+metadata:
+  name: java-postgres-workspace
+  version: 1.0.0
+components:
+  # Java (Maven) コンテナ
+  - name: java
+    container:
+      image: maven:3.9.6-eclipse-temurin-17
+      memoryLimit: 1Gi
+      mountSources: true
+      endpoints:
+        - name: http
+          targetPort: 8080
+      env:
+        - name: DATABASE_URL
+          value: jdbc:postgresql://postgresql:5432/mydb
+        - name: DB_USER
+          value: myuser
+        - name: DB_PASSWORD
+          value: mypassword
+
+  # PostgreSQL サイドカーコンテナ
+  - name: postgresql
+    container:
+      image: postgres:15
+      memoryLimit: 512Mi
+      env:
+        - name: POSTGRES_DB
+          value: mydb
+        - name: POSTGRES_USER
+          value: myuser
+        - name: POSTGRES_PASSWORD
+          value: mypassword
+      endpoints:
+        - name: postgres
+          targetPort: 5432
+
