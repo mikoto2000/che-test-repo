@@ -3,7 +3,6 @@ metadata:
   name: java-postgres-workspace
   version: 1.0.0
 components:
-  # Java (Maven) コンテナ
   - name: java
     container:
       image: maven:3.9.6-eclipse-temurin-17
@@ -20,23 +19,21 @@ components:
         - name: DB_PASSWORD
           value: mypassword
 
-  # PostgreSQL サイドカーコンテナ
   - name: postgresql
     container:
-      image: postgres:17
+      image: bitnami/postgresql:17
       memoryLimit: 512Mi
       env:
-        - name: POSTGRES_DB
-          value: mydb
-        - name: POSTGRES_USER
+        - name: POSTGRESQL_USERNAME
           value: myuser
-        - name: POSTGRES_PASSWORD
+        - name: POSTGRESQL_PASSWORD
           value: mypassword
-      endpoints:
-        - name: postgres
-          targetPort: 5432
-      # 常駐化のためのコマンド（Postgres は不要だが念のため）
-      command:
-        - "docker-entrypoint.sh"
-      args:
-        - "postgres"
+        - name: POSTGRESQL_DATABASE
+          value: mydb
+      volumeMounts:
+        - name: pgdata
+          path: /bitnami/postgresql
+volumes:
+  - name: pgdata
+    size: 1Gi
+
