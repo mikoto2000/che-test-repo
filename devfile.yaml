@@ -30,10 +30,3 @@ components:
           value: mypassword
         - name: POSTGRESQL_DATABASE
           value: mydb
-      volumeMounts:
-        - name: pgdata
-          path: /bitnami/postgresql
-volumes:
-  - name: pgdata
-    size: 1Gi
-
