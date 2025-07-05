@@ -4,12 +4,8 @@ metadata:
   version: 1.0.0
 components:
   - name: node
-    attributes:
-      controller.devfile.io/merge-contribution: true
-      annotations:
-        controller.devfile.io/expose-services: "node/http,node/http2"
     container:
-      image: 'mcr.microsoft.com/devcontainers/typescript-node:dev-22-bookworm'
+      image: 'registry.redhat.io/devspaces/udi-rhel9@sha256:cca6cbf5adcb5ce83392795573fe258d468568bddc3ad3618297e9e6234cfb79'
       memoryLimit: 1Gi
       mountSources: true
       command:
@@ -17,10 +13,12 @@ components:
       args:
         - infinity
       endpoints:
-        - name: http
+        - name: https
+          protocol: https
           targetPort: 8080
           exposure: public
-        - name: http2
+        - name: https2
+          protocol: https
           targetPort: 3000
           exposure: public
       env:
