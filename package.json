@@ -18,5 +18,8 @@
     "url": "https://github.com/mikoto2000/che-test-repo/issues"
   },
   "homepage": "https://github.com/mikoto2000/che-test-repo#readme",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
 }
