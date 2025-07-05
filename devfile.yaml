@@ -16,7 +16,7 @@ components:
         - name: http
           targetPort: 8080
           exposure: public
-        - name: http
+        - name: http2
           targetPort: 3000
           exposure: public
       env:
