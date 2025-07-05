@@ -4,11 +4,11 @@ metadata:
   version: 1.0.0
 components:
   - name: node
+    attributes:
+      controller.devfile.io/merge-contribution: true
+      annotations:
+        controller.devfile.io/expose-services: "node/http,node/http2"
     container:
-      attributes:
-        controller.devfile.io/merge-contribution: true
-        annotations:
-          controller.devfile.io/expose-services: "node/http,node/http2"
       image: 'mcr.microsoft.com/devcontainers/typescript-node:dev-22-bookworm'
       memoryLimit: 1Gi
       mountSources: true
