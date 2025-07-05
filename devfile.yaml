@@ -5,7 +5,7 @@ metadata:
 components:
   - name: node
     container:
-      image: 'docker pull mcr.microsoft.com/devcontainers/typescript-node:dev-22-bookworm'
+      image: 'mcr.microsoft.com/devcontainers/typescript-node:dev-22-bookworm'
       memoryLimit: 1Gi
       mountSources: true
       command:
