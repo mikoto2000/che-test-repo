@@ -13,11 +13,11 @@ components:
       args:
         - infinity
       endpoints:
-        - name: https
+        - name: express
           protocol: https
           targetPort: 8080
           exposure: public
-        - name: https2
+        - name: otherexample
           protocol: https
           targetPort: 3000
           exposure: public
